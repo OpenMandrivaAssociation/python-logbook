@@ -18,6 +18,7 @@ Group:		Development/Python
 Url:		http://logbook.pocoo.org/
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires:	python-setuptools
+BuildRequires:	python-cython
 
 %description
 Logbook is a logging sytem for Python that replaces the standard
