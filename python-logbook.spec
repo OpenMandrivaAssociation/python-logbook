@@ -1,7 +1,12 @@
 %define	tarname	Logbook
 %define name	python-logbook
-%define version	0.3
-%define release %mkrel 1
+%define version	0.4
+%define rel		1
+%if %mdkversion < 201100
+%define release %mkrel %{rel}
+%else
+%define release %{rel}
+%endif
 
 Summary:	A logging replacement for Python
 Name:		%{name}
@@ -23,15 +28,18 @@ applications and mind and the idea to make logging fun.
 %setup -q -n %{tarname}-%{version}
 
 %build
+make cybuild
 %__python setup.py build
 
 %install
 %__rm -rf %{buildroot}
-PYTHONDONTWRITEBYTECODE= %__python setup.py install --root=%{buildroot} --record=FILE_LIST
+PYTHONDONTWRITEBYTECODE= %__python setup.py install --root=%{buildroot}
 
 %clean
 %__rm -rf %{buildroot}
 
-%files -f FILE_LIST
+%files
 %defattr(-,root,root)
 %doc CHANGES README
+%py_platsitedir/Logbook*
+%py_platsitedir/logbook*
