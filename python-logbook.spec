@@ -1,24 +1,14 @@
 %define	tarname	Logbook
-%define name	python-logbook
-%define version	0.4
-%define rel		1
-%if %mdkversion < 201100
-%define release %mkrel %{rel}
-%else
-%define release %{rel}
-%endif
 
 Summary:	A logging replacement for Python
-Name:		%{name}
-Version:	%{version}
-Release:	%{release}
+Name:		python-logbook
+Version:	0.3
+Release:	2
 Source0:	http://pypi.python.org/packages/source/L/%{tarname}/%{tarname}-%{version}.tar.gz
 License:	BSD
 Group:		Development/Python
 Url:		http://logbook.pocoo.org/
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires:	python-setuptools
-BuildRequires:	python-cython
 
 %description
 Logbook is a logging sytem for Python that replaces the standard
@@ -29,18 +19,18 @@ applications and mind and the idea to make logging fun.
 %setup -q -n %{tarname}-%{version}
 
 %build
-make cybuild
 %__python setup.py build
 
 %install
-%__rm -rf %{buildroot}
-PYTHONDONTWRITEBYTECODE= %__python setup.py install --root=%{buildroot}
+PYTHONDONTWRITEBYTECODE= %__python setup.py install --root=%{buildroot} --record=FILE_LIST
+sed -i 's/.*egg-info$//' FILE_LIST
 
-%clean
-%__rm -rf %{buildroot}
-
-%files
-%defattr(-,root,root)
+%files -f FILE_LIST
 %doc CHANGES README
-%py_platsitedir/Logbook*
-%py_platsitedir/logbook*
+
+
+%changelog
+* Wed Jan 11 2012 Lev Givon <lev@mandriva.org> 0.3-1mdv2011.0
++ Revision: 759658
+- imported package python-logbook
+
