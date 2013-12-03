@@ -1,3 +1,4 @@
+%define debug_package %{nil}
 %define	tarname	Logbook
 
 Summary:	A logging replacement for Python
