@@ -26,7 +26,7 @@ PYTHONDONTWRITEBYTECODE= %__python setup.py install --root=%{buildroot} --record
 sed -i 's/.*egg-info$//' FILE_LIST
 
 %files -f FILE_LIST
-%doc CHANGES README
+%doc CHANGES 
 
 
 %changelog
