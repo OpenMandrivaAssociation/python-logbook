@@ -33,4 +33,5 @@ applications and mind and the idea to make logging fun.
 
 %files
 %doc CHANGES
-#{python3_sitelib}/logbook*
+%{python_sitearch}/logbook/
+%{python_sitearch}/Logbook-%{version}-py*
