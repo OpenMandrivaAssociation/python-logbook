@@ -25,12 +25,12 @@ applications and mind and the idea to make logging fun.
 %setup -q -n Logbook-%{version}
 
 %build
-%__python setup.py build
+%{_bindir}/cython-3 logbook/_speedups.pyx
+%py_build
 
 %install
-PYTHONDONTWRITEBYTECODE= %__python setup.py install --root=%{buildroot} --record=FILE_LIST
-sed -i 's/.*egg-info$//' FILE_LIST
+%py_install
 
-%files -f FILE_LIST
+%files
 %doc CHANGES
 %{python3_sitelib}/logbook*
