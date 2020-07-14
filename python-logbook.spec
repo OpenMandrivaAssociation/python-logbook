@@ -25,7 +25,7 @@ applications and mind and the idea to make logging fun.
 %setup -q -n Logbook-%{version}
 
 %build
-%{_bindir}/cython-3 logbook/_speedups.pyx
+%{_bindir}/cython logbook/_speedups.pyx
 %py_build
 
 %install
