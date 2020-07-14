@@ -20,7 +20,7 @@ library’s logging module. It was designed with both complex and simple
 applications and mind and the idea to make logging fun.
 
 %prep
-%setup -q -n %{tarname}-%{version}
+%setup -q -n Logbook-%{version}
 
 %build
 %__python setup.py build
