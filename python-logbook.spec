@@ -5,9 +5,9 @@ Summary:	A logging replacement for Python
 
 Name:		python-logbook
 Version:	1.5.3
-Release:	1
-Source0:  https://github.com/getlogbook/logbook/archive/%{version}/%{tarname}-%{version}.tar.gz
-#Source0:	http://pypi.python.org/packages/source/L/Logbook/Logbook-%{version}.tar.gz
+Release:	2
+#Source0:  https://github.com/getlogbook/logbook/archive/%{version}/%{tarname}-%{version}.tar.gz
+Source0:	http://pypi.python.org/packages/source/L/Logbook/Logbook-%{version}.tar.gz
 License:	BSD
 Group:		Development/Python
 Url:		http://logbook.pocoo.org/
@@ -20,7 +20,7 @@ library’s logging module. It was designed with both complex and simple
 applications and mind and the idea to make logging fun.
 
 %prep
-%setup -q -n %{tarname}-%{version}
+%setup -q -n Logbook-%{version}
 
 %build
 %__python setup.py build
