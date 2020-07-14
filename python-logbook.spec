@@ -12,7 +12,9 @@ License:	BSD
 Group:		Development/Python
 Url:		http://logbook.pocoo.org/
 
+BuildRequires:  pkgconfig(python)
 BuildRequires:	python3dist(setuptools)
+BuildRequires:  python3dist(cython)
 
 %description
 Logbook is a logging sytem for Python that replaces the standard
