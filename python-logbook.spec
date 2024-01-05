@@ -5,8 +5,8 @@
 
 Summary:	A logging replacement for Python
 Name:		python-%{lname}
-Version:	1.5.3
-Release:	5
+Version:	1.7.0.post0
+Release:	1
 License:	BSD
 Group:		Development/Python
 Url:		http://logbook.pocoo.org/
@@ -25,7 +25,7 @@ applications and mind and the idea to make logging fun.
 %files
 %doc CHANGES
 %{python_sitearch}/%{lname}/
-%{python_sitearch}/%{srcname}-%{version}-py%{pyver}.egg-info/
+%{python_sitearch}/%{srcname}-*.*-info/
 
 #----------------------------------------------------------------------------
 
@@ -33,7 +33,7 @@ applications and mind and the idea to make logging fun.
 %autosetup -p1 -n %{srcname}-%{version}
 
 %build
-%{_bindir}/cython logbook/_speedups.pyx
+#{_bindir}/cython src/cython/_speedups.pyx
 %py_build
 
 %install
