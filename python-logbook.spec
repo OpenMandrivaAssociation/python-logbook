@@ -9,7 +9,7 @@ Version:	1.7.0.post0
 Release:	1
 License:	BSD
 Group:		Development/Python
-Url:		http://logbook.pocoo.org/
+Url:		https://logbook.pocoo.org/
 #Source0:  https://github.com/getlogbook/logbook/archive/%{version}/%{lname}-%{version}.tar.gz
 Source0:	https://pypi.python.org/packages/source/L/%{srcname}/%{srcname}-%{version}.tar.gz
 
