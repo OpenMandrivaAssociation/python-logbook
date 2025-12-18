@@ -30,7 +30,7 @@ applications and mind and the idea to make logging fun.
 #----------------------------------------------------------------------------
 
 %prep
-%autosetup -p1 -n %{srcname}-%{version}
+%autosetup -p1 -n logbook-%{version}
 
 %build
 #{_bindir}/cython src/cython/_speedups.pyx
