@@ -14,8 +14,9 @@ Url:		https://logbook.pocoo.org/
 Source0:	https://pypi.python.org/packages/source/L/%{srcname}/%{srcname}-%{version}.tar.gz
 
 BuildRequires:  pkgconfig(python)
-BuildRequires:	python3dist(setuptools)
-BuildRequires:  python3dist(cython)
+BuildRequires:	python%{pyver}dist(setuptools)
+BuildRequires:  python%{pyver}dist(cython)
+BuildRequires:  python%{pyver}dist(pip)
 
 %description
 Logbook is a logging sytem for Python that replaces the standard
