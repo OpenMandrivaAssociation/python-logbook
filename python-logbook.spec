@@ -15,6 +15,7 @@ Source0:	https://pypi.python.org/packages/source/L/%{srcname}/%{srcname}-%{versi
 
 BuildRequires:  pkgconfig(python)
 BuildRequires:	python%{pyver}dist(setuptools)
+BuildRequires:	python%{pyver}dist(setuptools_rust)
 BuildRequires:  python%{pyver}dist(cython)
 BuildRequires:  python%{pyver}dist(pip)
 
