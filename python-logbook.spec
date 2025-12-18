@@ -5,8 +5,8 @@
 
 Summary:	A logging replacement for Python
 Name:		python-%{lname}
-Version:	1.7.0.post0
-Release:	2
+Version:	1.9.2
+Release:	1
 License:	BSD
 Group:		Development/Python
 Url:		https://logbook.pocoo.org/
