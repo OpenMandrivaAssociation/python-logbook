@@ -18,6 +18,7 @@ BuildRequires:	python%{pyver}dist(setuptools)
 BuildRequires:	python%{pyver}dist(setuptools-rust)
 BuildRequires:  python%{pyver}dist(cython)
 BuildRequires:  python%{pyver}dist(pip)
+BuildRequires:  rust-packaging
 
 %description
 Logbook is a logging sytem for Python that replaces the standard
