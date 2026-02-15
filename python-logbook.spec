@@ -1,41 +1,49 @@
-#define debug_package %{nil}
+%undefine _debugsource_template
+%define module logbook
+%define oname logbook
 
-%global srcname Logbook
-%define	lname	%(echo %{srcname} | tr [:upper:] [:lower:])
-
+Name:		python-logbook
 Summary:	A logging replacement for Python
-Name:		python-%{lname}
-Version:	1.7.0.post0
-Release:	3
+Version:	1.9.2
+Release:	1
 License:	BSD
 Group:		Development/Python
-Url:		https://logbook.pocoo.org/
-#Source0:  https://github.com/getlogbook/logbook/archive/%{version}/%{lname}-%{version}.tar.gz
-Source0:	https://pypi.python.org/packages/source/L/%{srcname}/%{srcname}-%{version}.tar.gz
+URL:		https://github.com/getlogbook/logbook
+Source0:	https://github.com/getlogbook/logbook/archive/%{version}/%{oname}-%{version}.tar.gz
+Source1:	logbook-%{version}-vendor.tar.xz
 
-BuildRequires:  pkgconfig(python)
-BuildRequires:	python3dist(setuptools)
-BuildRequires:  python3dist(cython)
+BuildSystem:	python
+BuildRequires:	pkgconfig(python3)
+BuildRequires:	python%{pyver}dist(cython)
+BuildRequires:	python%{pyver}dist(pip)
+BuildRequires:	python%{pyver}dist(setuptools)
+BuildRequires:	python%{pyver}dist(setuptools-rust)
+BuildRequires:	python%{pyver}dist(wheel)
+BuildRequires:	cargo
+BuildRequires:	rust-packaging
 
 %description
 Logbook is a logging sytem for Python that replaces the standard
 library’s logging module. It was designed with both complex and simple
 applications and mind and the idea to make logging fun.
 
-%files
-%doc CHANGES
-%{python_sitearch}/%{lname}/
-%{python_sitearch}/%{srcname}-*.*-info/
-
-#----------------------------------------------------------------------------
+Documentation: https://logbook.readthedocs.io/
 
 %prep
-%autosetup -p1 -n %{srcname}-%{version}
+%autosetup -n %{module}-%{version} -p1 -a1
+# Remove bundled egg-info
+rm -rf Logbook.egg-info
+# prpe the vendored crates
+%cargo_prep -v vendor
 
-%build
-#{_bindir}/cython src/cython/_speedups.pyx
-%py_build
+cat >>.cargo/config <<EOF
+[source.crates-io]
+replace-with = "vendored-sources"
 
-%install
-%py_install
+[source.vendored-sources]
+directory = "vendor"
+EOF
 
+%files
+%{python_sitearch}/%{module}/
+%{python_sitearch}/%{module}-%{version}.dist-info/
