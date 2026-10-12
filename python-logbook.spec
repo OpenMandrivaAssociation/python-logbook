@@ -5,7 +5,7 @@
 Name:		python-logbook
 Summary:	A logging replacement for Python
 Version:	1.9.2
-Release:	1
+Release:	2
 License:	BSD
 Group:		Development/Python
 URL:		https://github.com/getlogbook/logbook
