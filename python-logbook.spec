@@ -44,6 +44,11 @@ replace-with = "vendored-sources"
 directory = "vendor"
 EOF
 
+%build -p
+# Vendored PyO3 0.27.1 stops at Python 3.14. This is upstream's
+# escape hatch: build the stable ABI and accept 3.15.
+export PYO3_USE_ABI3_FORWARD_COMPATIBILITY=1
+
 %files
 %{python_sitearch}/%{module}/
 %{python_sitearch}/%{module}-%{version}.dist-info/
