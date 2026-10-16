@@ -4,8 +4,8 @@
 
 Name:		python-logbook
 Summary:	A logging replacement for Python
-Version:	1.9.2
-Release:	2
+Version:	1.10.1
+Release:	1
 License:	BSD
 Group:		Development/Python
 URL:		https://github.com/getlogbook/logbook
@@ -14,7 +14,6 @@ Source1:	logbook-%{version}-vendor.tar.xz
 
 BuildSystem:	python
 BuildRequires:	pkgconfig(python3)
-BuildRequires:	python%{pyver}dist(cython)
 BuildRequires:	python%{pyver}dist(pip)
 BuildRequires:	python%{pyver}dist(setuptools)
 BuildRequires:	python%{pyver}dist(setuptools-rust)
@@ -43,11 +42,6 @@ replace-with = "vendored-sources"
 [source.vendored-sources]
 directory = "vendor"
 EOF
-
-%build -p
-# Vendored PyO3 0.27.1 stops at Python 3.14. This is upstream's
-# escape hatch: build the stable ABI and accept 3.15.
-export PYO3_USE_ABI3_FORWARD_COMPATIBILITY=1
 
 %files
 %{python_sitearch}/%{module}/
